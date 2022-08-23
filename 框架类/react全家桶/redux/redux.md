@@ -2,7 +2,7 @@
 
 #### redux解决了什么问题？为神马要用redux？
 
-- 主要解决了状态共享的问题，也就是说当一个组件内部状态发生改变的时候，别的组件希望立刻得知最新的状态。
+- 主要解决了状态层层转递的问题。
 - 当我们从view层触发一个行为的时候会调用store.dispatch()这个方法，store是全局唯一的一个容器，也就是只有这一个store对象，这个对象是由createStore方法创建出来的，这个store对象里面有dispatch方法，getState方法以及subscribe等方法。
 - 当调用dispatch方法时，会执行reducer方法来计算出最新的状态，如果组件想要拿到最新的状态就要绑定监听事件也就是调用subscribe方法，传入一个callback，将回调函数都缓存到一个数组里，等执行完reducer后依次执行这些callback。这样每个绑定subscribe事件的组件都能在回调里获取到最新的状态。其实就是利用的发布订阅模式。
 ```js
