@@ -158,7 +158,7 @@ render() {
     }
 ```
 ```js
-//connect方法
+//connect方法，如果是类组件
 function connect(mapStateToProps, mapDispatchToProps){
     return function(OldComponent){
         return class extends React.Component{
