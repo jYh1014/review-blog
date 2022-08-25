@@ -5,6 +5,7 @@
 - 两种模式下 url变化都不会引起页面的重新刷新，也就是不会去重新请求服务器。
 - 都适合单页应用
 - 都会保存 url的历史记录栈。
+- go 、back、forward调用的都是window.history的api。
 
 #### 不同点
 
@@ -28,6 +29,7 @@
 
 - 利用Link等组件跳转的时候，会调用history.push方法，将当前目标地址作为参数传递进去，这个方法内部会调用window.history.pushState方法来修改浏览器的url，调用setState方法来依次执行监听函数而且还会重新创建一个location对象作为监听函数的参数。我们是在Router组件内部做的监听，当触发时会进行setState来重新渲染。然后Route组件会去进行路由匹配，将匹配到的组件渲染到页面上。
 - 但是浏览器的某些行为下比如前进后退，并不会调用pushState，这个时候我们需要添加监听事件popstate
+- 注意pushState、replaceState的区别。
 ```js
 window.addEventListener('popstate',function(e){
     /* 监听改变 */
