@@ -95,4 +95,13 @@ render(){
 ```
 #### hash模式
 
-- 当你通过Link组件跳转的时候，也会调用history.push方法，里面底层是修改了window.location.hash值，同样的也需要hashChange事件来监听hash值的变化，当hash值变化了，会调用回调函数，执行setState方法，从而触发Router组件内部的监听事件。
+- 当你通过Link组件跳转的时候，也会调用history.push方法，里面底层是修改了window.location.hash值，同样的也需要hashChange事件来监听hash值的变化，当hash值变化了，会调用hashChange的回调函数，执行setState方法，从而触发Router组件内部的监听事件，然后利用 context的特性，凡是使用 Provider.Consumer 来 访问 其context的组件都会重新渲染，也就是Route组件会重新进行match。
+
+#### Prompt组件
+
+- 主要是用于路由跳转前的提示操作。
+
+#### withRouter组件
+
+- 主要是解决 那些不是通过路由跳转的组件 却想要获取 history、location等属性。本质上是一个高阶组件。
+
